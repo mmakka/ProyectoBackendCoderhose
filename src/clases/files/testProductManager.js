@@ -1,7 +1,7 @@
-const { ProductManager } = require("./index.js");
+const { ProductManager } = require("../index.js");
 
 try {
-const pM = new ProductManager("./productos.txt");
+const pM = new ProductManager("./src/clases/files/productos.json");
   
     pM.getProducts()
       .then((products) => {
@@ -26,7 +26,7 @@ const pM = new ProductManager("./productos.txt");
         return pM.getProductByCode(25);
       })
       .then((p) => {
-        console.log("Producto con id: 25", p);
+        console.log("Producto con code: 25", p);
         return pM.updateProduct(2, { price: 123 });
       })
       .then((_) => pM.deleteProduct(2))

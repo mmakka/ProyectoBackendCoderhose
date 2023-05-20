@@ -1,1 +1,0 @@
-[{"tittle":"Arroz","description":"blanco","precio":15,"thumbnail":"imagen.jpg","stock":20,"code":1},{"title":"Auriculares","description":"Auriculares con microfono","price":40000,"thumbnail":"sin img","stock":25,"code":2},{"title":"Auriculares","description":"Auriculares con microfono","price":40000,"thumbnail":"sin img","stock":25,"code":3}]
