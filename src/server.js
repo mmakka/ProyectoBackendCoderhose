@@ -1,12 +1,15 @@
-import express from "express";
-import { ProductManager } from "./clases/index.js";
+const express = require("express");
+const { ProductManager } = require("./src/clases/index.js");
+const app = express();
+app.use(express.urlencoded({ extended: true }));
 
-const app = express;
 
 const productManager = new ProductManager();
 
 app.get("/productos", async (req,res)=> {
-    const productos = await productManager.getProducts();
+    console.log(req.query.limit);
+    const limit = req.query.limit;
+    const productos = await productManager.getProducts(req.query.limit);
     res.send(productos)
 })
 
@@ -18,4 +21,4 @@ app.get("productos/:id", async (req,res)=> {
 
 app.listen(8080,()=>{
     console.log("Servidor levantado");
-})
+}) 
