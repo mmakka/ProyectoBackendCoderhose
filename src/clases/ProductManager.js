@@ -1,4 +1,5 @@
-const fs = require("fs");
+import fs from "fs";
+
 
 class ProductManager{
     constructor(path){
@@ -84,7 +85,4 @@ getProductByCode = async (code) => {
 
 }
 
-module.exports = {
-    ProductManager,
-  };
-
+ export default ProductManager;

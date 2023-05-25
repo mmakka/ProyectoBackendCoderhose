@@ -1,16 +1,17 @@
-const express = require("express");
-const { ProductManager } = require("./src/clases/index.js");
+import express  from "express";
+import ProductManager from "./clases/ProductManager.js";
+
 const app = express();
 app.use(express.urlencoded({ extended: true }));
 
 
-const productManager = new ProductManager();
+const productManager = new ProductManager("./files/ProductManager.js");
 
 app.get("/productos", async (req,res)=> {
     console.log(req.query.limit);
     const limit = req.query.limit;
     const productos = await productManager.getProducts(req.query.limit);
-    res.send(productos)
+    res.send("test")
 })
 
 app.get("productos/:id", async (req,res)=> {
