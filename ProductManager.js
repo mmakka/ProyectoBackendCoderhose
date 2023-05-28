@@ -1,12 +1,11 @@
 import fs from "fs";
 
-
-class ProductManager{
+export default class ProductManager{
     constructor(path){
         this.path = path;
     }
     
-    getProducts = async (limite) =>{
+    getProducts = async () =>{
         const fileContent = await fs.promises.readFile(this.path, "utf-8");
         let products = [];
         if (fileContent) {
@@ -44,7 +43,7 @@ getProductByCode = async (code) => {
     return product;
   }
 
-   updateProduct = async (code, productUpdate)=> {
+updateProduct = async (code, productUpdate)=> {
     const products = await this.getProducts();
     if (products.length > 0) {
       const productIdx = products.findIndex((producto) => producto.code === code);
@@ -68,7 +67,7 @@ getProductByCode = async (code) => {
     }
   }
 
-    deleteProduct = async (code) => {
+deleteProduct = async (code) => {
     const products = await this.getProducts();
     let filteredProducts = [];
 
@@ -82,7 +81,6 @@ getProductByCode = async (code) => {
       console.log(`No existe un producto con code: ${code}.`);
     }
   }
-
 }
 
- export default ProductManager;
+ 
