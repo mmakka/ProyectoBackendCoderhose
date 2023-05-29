@@ -1,4 +1,6 @@
 import fs from "fs";
+import {v4 as uuidv4} from uuid ;
+
 
 export default class ProductManager{
     constructor(path){
@@ -16,16 +18,12 @@ export default class ProductManager{
 
     agregarProduct = async (product) => {
         const { title, description, price, thumbnail, stock } = product;
-        if (!title || !description || !price || !thumbnail || !stock) {
+        if (!title || !description || !price || !thumbnail || !stock || !category) {
           console.log("El producto no pudo crearse, debe tener todos los campos requeridos,intentelo nuevamente");
           return;
         }
         const products = await this.getProducts();
-        if (product.length === 0) {
-            product.code = 1;
-        } else {
-            product.code = products[products.length - 1].code + 1;
-        }
+        product.code = uuidv4();
         products.push(product)
 
         await fs.promises.writeFile(this.path, JSON.stringify(products,null,"\t"))
@@ -81,6 +79,4 @@ deleteProduct = async (code) => {
       console.log(`No existe un producto con code: ${code}.`);
     }
   }
-}
-
- 
+};
